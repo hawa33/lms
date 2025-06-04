@@ -1,6 +1,6 @@
 {/*TEMPORARY DATA*/}
 
-export let role = "admin";
+export let role = "admin"; // Change this to "teacher" or "parent" to test different roles
 
 export const teachersData = [
   {

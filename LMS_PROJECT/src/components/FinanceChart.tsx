@@ -1,6 +1,16 @@
 "use client";
+
 import Image from "next/image";
-import {LineChart,Line,XAxis,YAxis,CartesianGrid,Tooltip,Legend,ResponsiveContainer,} from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 const data = [
   { name: "Jan", income: 4000, expense: 2400 },
@@ -21,25 +31,26 @@ const FinanceChart = () => {
   return (
     <div className="bg-white rounded-xl w-full h-full p-4 shadow">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-lg font-semibold">Finance</h1>
+        <h2 className="text-lg font-semibold text-gray-800">Finance</h2>
         <Image src="/moreDark.png" alt="More options" width={20} height={20} />
       </div>
-      <ResponsiveContainer width="100%" height="90%">
+
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart
           data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          margin={{ top: 10, right: 30, left: 0, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#ddd" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
           <XAxis
             dataKey="name"
             axisLine={false}
-            tick={{ fill: "#374151" }} 
+            tick={{ fill: "#6B7280" }}
             tickLine={false}
             tickMargin={10}
           />
           <YAxis
             axisLine={false}
-            tick={{ fill: "#374151" }}
+            tick={{ fill: "#6B7280" }}
             tickLine={false}
             tickMargin={10}
           />
@@ -47,10 +58,22 @@ const FinanceChart = () => {
           <Legend
             align="center"
             verticalAlign="top"
-            wrapperStyle={{ paddingTop: "10px", paddingBottom: "30px" }}
+            wrapperStyle={{ paddingTop: 10 }}
           />
-          <Line type="monotone" dataKey="income" stroke="#3B82F6" strokeWidth={4} /> 
-          <Line type="monotone" dataKey="expense" stroke="#EF4444" strokeWidth={4} />
+          <Line
+            type="monotone"
+            dataKey="income"
+            stroke="#3B82F6"
+            strokeWidth={3}
+            dot={{ r: 3 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="expense"
+            stroke="#EF4444"
+            strokeWidth={3}
+            dot={{ r: 3 }}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>

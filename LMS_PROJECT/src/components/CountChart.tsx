@@ -1,6 +1,6 @@
 "use client";
-import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
-import Image from 'next/image';
+import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
+import Image from "next/image";
 
 const data = [
   {
@@ -51,9 +51,11 @@ const CountChart = () => {
             />
           </RadialBarChart>
         </ResponsiveContainer>
+
+        {/* Center Icon */}
         <Image
           src="/maleFemale.png"
-          alt="MaleFemale"
+          alt="Male and Female Icon"
           width={50}
           height={50}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -63,17 +65,23 @@ const CountChart = () => {
       {/* Bottom Stats */}
       <div className="flex justify-around mt-4">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full" style={{ backgroundColor: "#A2C3FF" }}></div>
+          <div
+            className="w-4 h-4 rounded-full"
+            style={{ backgroundColor: "#A2C3FF" }}
+          ></div>
           <div>
-            <h1 className="font-bold text-sm">1,256</h1>
-            <h2 className="text-xs text-gray-500">Boys (55%)</h2>
+            <h1 className="font-bold text-sm">200</h1>
+            <h2 className="text-xs text-gray-500">Boys (80%)</h2>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full" style={{ backgroundColor: "#FFB6C1" }}></div>
+          <div
+            className="w-4 h-4 rounded-full"
+            style={{ backgroundColor: "#FFB6C1" }}
+          ></div>
           <div>
-            <h1 className="font-bold text-sm">1,256</h1>
-            <h2 className="text-xs text-gray-500">Girls (45%)</h2>
+            <h1 className="font-bold text-sm">50</h1>
+            <h2 className="text-xs text-gray-500">Girls (20%)</h2>
           </div>
         </div>
       </div>

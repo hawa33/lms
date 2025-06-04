@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +16,8 @@ type MenuGroup = {
   title: string;
   items: MenuItem[];
 };
-const menuGroups:MenuGroup[] = [
+
+const menuGroups: MenuGroup[] = [
   {
     title: "MENU",
     items: [
@@ -135,31 +137,48 @@ const Menu = () => {
 
   return (
     <div className="mt-4 text-sm">
-      {menuGroups.map((group) => (
-        <div className="flex flex-col gap-2" key={group.title}>
-          <span className="hidden lg:block text-gray-400 font-light my-4 px-2">
-            {group.title}
-          </span>
+      {menuGroups.map((group, groupIndex) => (
+        <div key={group.title} className="flex flex-col gap-2">
+          {/* Skip rendering the title if it's "MENU" */}
+          {group.title !== "MENU" && (
+            <span className="hidden lg:block text-gray-400 font-light my-4 px-2 uppercase text-xs">
+              {group.title}
+            </span>
+          )}
+
           {group.items
             .filter((item) => item.visible.includes(role))
-            .map((item) => (
-              <Link
-                href={item.href}
-                key={item.label}
-                className={`flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md transition-colors hover:bg-blue-500 hover:text-SanSkyLight ${
-                  pathname === item.href ? "bg-blue-50 text-blue-600" : ""
-                }`}
-              >
-                <Image 
-                  src={item.icon} 
-                  alt={item.label} 
-                  width={20} 
-                  height={20} 
-                  className="min-w-[20px]"
-                />
-                <span className="hidden lg:block">{item.label}</span>
-              </Link>
-            ))}
+            .map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  href={item.href}
+                  key={item.label}
+                  className={`relative flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md transition-colors hover:bg-blue-500 hover:text-white ${
+                    isActive ? "bg-blue-100 text-blue-700 font-semibold" : ""
+                  }`}
+                >
+                  <Image
+                    src={item.icon}
+                    alt={item.label}
+                    width={20}
+                    height={20}
+                    className="min-w-[20px]"
+                  />
+                  <span className="hidden lg:block">{item.label}</span>
+
+                  {/* Tooltip for collapsed menu */}
+                  <span className="lg:hidden absolute left-full ml-2 bg-gray-800 text-white text-xs px-2 py-1 rounded shadow-md whitespace-nowrap">
+                    {item.label}
+                  </span>
+                </Link>
+              );
+            })}
+
+          {/* Divider between groups */}
+          {groupIndex !== menuGroups.length - 1 && (
+            <div className="border-t border-gray-200 my-4"></div>
+          )}
         </div>
       ))}
     </div>

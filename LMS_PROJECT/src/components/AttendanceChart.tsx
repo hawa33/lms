@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import {
   BarChart,
@@ -51,10 +52,9 @@ const AttendanceChart = () => {
             />
             <Legend align="right" verticalAlign="top" />
 
-            {/* Bars with updated icon-based colors */}
             <Bar
               dataKey="present"
-              fill="#A2C3FF" // Light blue
+              fill="#A2C3FF" // Light blue for present
               radius={[10, 10, 0, 0]}
               isAnimationActive={true}
               animationDuration={1200}
@@ -63,7 +63,7 @@ const AttendanceChart = () => {
             />
             <Bar
               dataKey="absent"
-              fill="#FF6B6B" // Light pink
+              fill="#FF6B6B" // Light red for absent
               radius={[10, 10, 0, 0]}
               isAnimationActive={true}
               animationDuration={1200}

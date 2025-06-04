@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-3">
           <div className="flex flex-col items-end">
-            <span className="text-xs font-medium leading-tight">Aanchal Baral</span>
+            <span className="text-xs font-medium leading-tight">Sandesh Sapkota</span>
             <span className="text-[10px] text-gray-500">Admin</span>
           </div>
           <Image
